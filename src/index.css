@@ -1,8 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap');
 :root {
-  --font-size-lrg: clamp(1.375rem, 2vw + 1rem, 2.25rem);
-  --font-size-base: clamp(1.833rem, 2vw + 1rem, 3rem);
+  --font-size-lrg: clamp(1.6rem, 1.32rem + 1.4vw, 3rem);
+  --font-size-base: clamp(1rem, 0.95rem + 0.25vw, 1.25rem);
+  --color-body: #333;
 }
 html {
   font-family: 'Noto Sans JP', sans-serif;
+  padding: 0.6rem 1rem;
+  color: var(--color-body);
 }

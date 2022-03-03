@@ -11,10 +11,13 @@ const styles = {
     textAlign: 'center',
     fontSize: 'var(--font-size-lrg)',
   }),
+  header: css({
+    marginBottom: '1rem',
+  }),
 };
 
 const Title: VFC<Props> = ({ title }) => (
-  <header>
+  <header css={styles.header}>
     <h1 css={styles.h1}>{title}</h1>
   </header>
 );
