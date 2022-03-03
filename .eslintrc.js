@@ -107,6 +107,8 @@ module.exports = {
     // アップデートに伴い import React from 'react' がエラー扱いとなってしまうのを修正した
     'no-use-before-define': 'off',
     '@typescript-eslint/no-use-before-define': ['error'],
+    // console は warn と error のみ許可する
+    'no-console': ['error', { allow: ['warn', 'error'] }],
   },
   overrides: [
     {
