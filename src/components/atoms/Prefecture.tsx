@@ -1,6 +1,7 @@
-import { useState, VFC } from 'react';
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
+import { useState, VFC } from 'react';
+
 import { Prefecture as TypePrefecture } from 'types/prefecture';
 
 type Props = {
