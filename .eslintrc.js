@@ -26,6 +26,7 @@ module.exports = {
   plugins: [
     '@typescript-eslint',
     'import',
+    'unused-imports',
     'jsx-a11y',
     'prefer-arrow',
     'react',
@@ -109,6 +110,37 @@ module.exports = {
     '@typescript-eslint/no-use-before-define': ['error'],
     // console は warn と error のみ許可する
     'no-console': ['error', { allow: ['warn', 'error'] }],
+    // import の順番を統一化する
+    '@typescript-eslint/no-unused-vars': 'off',
+    'unused-imports/no-unused-imports-ts': 'warn',
+    'import/order': [
+      'warn',
+      {
+        groups: [
+          'builtin',
+          'external',
+          'internal',
+          'parent',
+          'sibling',
+          'index',
+          'object',
+          'type',
+        ],
+        'newlines-between': 'always',
+        pathGroupsExcludedImportTypes: ['builtin'],
+        alphabetize: { order: 'asc', caseInsensitive: true },
+        pathGroups: [
+          { pattern: 'src/types/**', group: 'internal', position: 'before' },
+          {
+            pattern: 'src/components/**',
+            group: 'internal',
+            position: 'before',
+          },
+          { pattern: 'src/library/**', group: 'internal', position: 'before' },
+          { pattern: 'src/recoil/**', group: 'internal', position: 'before' },
+        ],
+      },
+    ],
   },
   overrides: [
     {
