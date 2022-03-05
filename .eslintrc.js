@@ -141,6 +141,10 @@ module.exports = {
         ],
       },
     ],
+    // commit時にformatが走るため、indent関連のルールをオフにした
+    'implicit-arrow-linebreak': 'off',
+    indent: 'off',
+    'react/jsx-indent': 'off',
   },
   overrides: [
     {
