@@ -12,9 +12,11 @@ type Props = {
 const styles = {
   label: css({
     fontSize: 'var(--font-size-base)',
+    cursor: 'pointer',
   }),
   input: css({
     marginRight: '4px',
+    cursor: 'pointer',
   }),
   item: css({
     flex: 1,
