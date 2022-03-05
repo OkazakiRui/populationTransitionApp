@@ -26,8 +26,11 @@ const Prefectures: VFC = () => {
     <ul css={styles.wrap}>
       {data.message === null
         ? data.result.map((prefectureData) => (
-            <Prefecture prefecture={prefectureData} /> // eslint-disable-line react/jsx-indent
-          )) // eslint-disable-line indent
+            <Prefecture
+              prefecture={prefectureData}
+              key={String(prefectureData.prefCode)}
+            />
+          ))
         : 'データの取得に失敗しました'}
     </ul>
   );
