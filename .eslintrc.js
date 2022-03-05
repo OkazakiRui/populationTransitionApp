@@ -146,6 +146,8 @@ module.exports = {
     'implicit-arrow-linebreak': 'off',
     indent: 'off',
     'react/jsx-indent': 'off',
+    // useEffect の配列を空にするとエラーになり、意図しない挙動を作るためオフにした
+    'react-hooks/exhaustive-deps': 'off',
   },
   overrides: [
     {
