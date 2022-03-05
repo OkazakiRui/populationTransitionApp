@@ -6,6 +6,12 @@ import { useRecoilValue } from 'recoil';
 import Prefecture from 'components/atoms/Prefecture';
 import prefecturesSelector from 'recoil/prefectures';
 import { PrefecturesResult } from 'types/prefecture';
+import { SeriesData } from 'types/series';
+
+type Props = {
+  addChartData: (series: SeriesData) => void;
+  removeChartData: (prefName: string) => void;
+};
 
 const styles = {
   wrap: css({
@@ -19,7 +25,7 @@ const styles = {
   }),
 };
 
-const Prefectures: VFC = () => {
+const Prefectures: VFC<Props> = ({ addChartData, removeChartData }) => {
   const data: PrefecturesResult = useRecoilValue(prefecturesSelector);
 
   return (
@@ -28,6 +34,8 @@ const Prefectures: VFC = () => {
         ? data.result.map((prefectureData) => (
             <Prefecture
               prefecture={prefectureData}
+              addChartData={addChartData}
+              removeChartData={removeChartData}
               key={String(prefectureData.prefCode)}
             />
           ))

@@ -6,13 +6,16 @@ import Prefectures from 'components/molecules/Prefectures';
 import useChartData from 'hooks/useChartData';
 
 const Home: VFC = () => {
-  const [chartData] = useChartData();
+  const [chartData, addChartData, removeChartData] = useChartData();
 
   return (
     <>
       <Title title="都道府県別総人口推移グラフ" />
       <Suspense fallback={<>loading...</>}>
-        <Prefectures />
+        <Prefectures
+          addChartData={addChartData}
+          removeChartData={removeChartData}
+        />
         <Chart chartData={chartData} />
       </Suspense>
     </>

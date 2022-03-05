@@ -1,12 +1,16 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
-import { useState, VFC } from 'react';
+import { memo, useState, VFC } from 'react';
+import { useRecoilValue } from 'recoil';
 
+import seriesSelector from 'recoil/seriesData';
 import { Prefecture as TypePrefecture } from 'types/prefecture';
+import { SeriesData } from 'types/series';
 
 type Props = {
   prefecture: TypePrefecture;
-  selected?: () => void;
+  addChartData: (series: SeriesData) => void;
+  removeChartData: (prefName: string) => void;
 };
 
 const styles = {
@@ -24,9 +28,27 @@ const styles = {
   }),
 };
 
-const Prefecture: VFC<Props> = ({ prefecture }) => {
+const Prefecture: VFC<Props> = ({
+  prefecture,
+  addChartData,
+  removeChartData,
+}) => {
   const [isChecked, setIsChecked] = useState(false);
-  const checkHandler = () => setIsChecked(!isChecked);
+  const value = useRecoilValue(seriesSelector(prefecture));
+
+  /**
+   * input:checkbox が更新されるとグラフのデータが更新される
+   * @date 2022-03-05
+   * @returns {void}
+   */
+  const checkHandler = () => {
+    if (isChecked) {
+      removeChartData(value.name);
+    } else {
+      addChartData(value);
+    }
+    setIsChecked(!isChecked);
+  };
 
   return (
     <li css={styles.item}>
@@ -44,4 +66,4 @@ const Prefecture: VFC<Props> = ({ prefecture }) => {
   );
 };
 
-export default Prefecture;
+export default memo(Prefecture);
