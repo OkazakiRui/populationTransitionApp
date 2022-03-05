@@ -138,6 +138,7 @@ module.exports = {
           },
           { pattern: 'src/library/**', group: 'internal', position: 'before' },
           { pattern: 'src/recoil/**', group: 'internal', position: 'before' },
+          { pattern: 'src/hooks/**', group: 'internal', position: 'before' },
         ],
       },
     ],

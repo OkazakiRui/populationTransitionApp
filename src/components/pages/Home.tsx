@@ -1,13 +1,12 @@
-import { Suspense, useState, VFC } from 'react';
+import { Suspense, VFC } from 'react';
 
 import Chart from 'components/atoms/Chart';
 import Title from 'components/atoms/Title';
 import Prefectures from 'components/molecules/Prefectures';
-import { SeriesData } from 'types/series';
+import useChartData from 'hooks/useChartData';
 
 const Home: VFC = () => {
-  // chartに表示するデータを保持
-  const [chartData, setChartData] = useState<SeriesData[]>([]);
+  const [chartData] = useChartData();
 
   return (
     <>
