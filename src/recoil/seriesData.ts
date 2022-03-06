@@ -37,7 +37,6 @@ const seriesSelector = selectorFamily<
 
       // グラフに描画するデータを作って返します。
       const series: SeriesData = {
-        type: 'line',
         data: totalPopulation,
         name: prefName,
       };
