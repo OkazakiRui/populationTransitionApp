@@ -2,6 +2,7 @@
 import { css } from '@emotion/react';
 import { VFC } from 'react';
 import {
+  Label,
   Legend,
   Line,
   LineChart,
@@ -14,7 +15,7 @@ import {
 import { RechartData } from 'types/series';
 
 const styles = {
-  wrap: css({ marginInline: 'auto', marginTop: '3rem', width: '90%' }),
+  wrap: css({ marginInline: 'auto', marginTop: '1rem', width: '90%' }),
 };
 
 type Props = {
@@ -27,18 +28,37 @@ const Chart: VFC<Props> = ({ chartData }) => (
       <LineChart
         data={chartData.data}
         margin={{
-          top: 5,
-          right: 30,
+          top: 35,
+          right: 55,
           left: 20,
           bottom: 5,
         }}
       >
-        <XAxis dataKey="name" />
-        <YAxis />
-        <Tooltip />
+        <XAxis dataKey="name">
+          <Label value="年度" offset={25} position="right" />
+        </XAxis>
+        <YAxis
+          tickFormatter={(value: number) =>
+            new Intl.NumberFormat('ja', {
+              notation: 'compact',
+              compactDisplay: 'short',
+            }).format(value)
+          } // eslint-disable-line react/jsx-curly-newline
+        >
+          <Label value="人口数" offset={10} position="top" />
+        </YAxis>
+        <Tooltip
+          formatter={(value: number) =>
+            new Intl.NumberFormat('ja', {
+              notation: 'compact',
+              compactDisplay: 'short',
+            }).format(value)
+          } // eslint-disable-line react/jsx-curly-newline
+          labelFormatter={(label: string) => `${label}年度`}
+        />
         <Legend layout="vertical" align="right" verticalAlign="middle" />
         {chartData.prefecturesNameList.map((name) => (
-          <Line dataKey={name} key={name} strokeWidth="2" />
+          <Line dataKey={name} key={name} strokeWidth="2" dot={false} />
         ))}
       </LineChart>
     </ResponsiveContainer>
