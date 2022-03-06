@@ -148,6 +148,8 @@ module.exports = {
     'react/jsx-indent': 'off',
     // useEffect の配列を空にするとエラーになり、意図しない挙動を作るためオフにした
     'react-hooks/exhaustive-deps': 'off',
+    // import の数が多くなると改行されるが、prettier の改行のタイミングと異なるため prettier に合わせた
+    'object-curly-newline': 'off',
   },
   overrides: [
     {
