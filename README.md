@@ -48,3 +48,15 @@ or
 ```
 yarn build
 ```
+
+### test する
+
+```
+npm run test
+```
+
+or
+
+```
+yarn test
+```
