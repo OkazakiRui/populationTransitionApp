@@ -5,7 +5,7 @@ import { PopulationResult } from 'types/population';
 import { SeriesData } from 'types/series';
 
 // グラフに描画するデータのキャッシュを保存します
-const seriesCacheAtom = atomFamily<SeriesData | null, number>({
+export const seriesCacheAtom = atomFamily<SeriesData | null, number>({
   key: 'seriesAtom',
   default: null,
 });

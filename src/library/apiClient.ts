@@ -1,6 +1,11 @@
 import axios from 'axios';
 
-const valueConfirmation = (): {
+/**
+ * envファイルの有無を確認します。
+ * @date 2022-03-06
+ * @returns {{baseUrl: string; apiKey: string;}}
+ */
+const envConfirmation = (): {
   baseUrl: string;
   apiKey: string;
 } => {
@@ -16,7 +21,7 @@ const valueConfirmation = (): {
   };
 };
 
-const { baseUrl, apiKey } = valueConfirmation();
+const { baseUrl, apiKey } = envConfirmation();
 
 const apiClient = axios.create({
   baseURL: `${baseUrl}/api/v1`,
