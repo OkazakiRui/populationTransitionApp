@@ -7,12 +7,6 @@ import seriesSelector from 'recoil/seriesData';
 import { Prefecture as TypePrefecture } from 'types/prefecture';
 import { SeriesData } from 'types/series';
 
-type Props = {
-  prefecture: TypePrefecture;
-  addChartData: (series: SeriesData) => void;
-  removeChartData: (prefName: string) => void;
-};
-
 const styles = {
   label: css({
     fontSize: 'var(--font-size-base)',
@@ -28,13 +22,19 @@ const styles = {
   }),
 };
 
+type Props = {
+  prefecture: TypePrefecture;
+  addChartData: (series: SeriesData) => void;
+  removeChartData: (prefName: string) => void;
+};
+
 const Prefecture: VFC<Props> = ({
   prefecture,
   addChartData,
   removeChartData,
 }) => {
   const [isChecked, setIsChecked] = useState(false);
-  const value = useRecoilValue(seriesSelector(prefecture));
+  const series = useRecoilValue(seriesSelector(prefecture));
 
   /**
    * input:checkbox が更新されるとグラフのデータが更新される
@@ -43,9 +43,9 @@ const Prefecture: VFC<Props> = ({
    */
   const checkHandler = () => {
     if (isChecked) {
-      removeChartData(value.name);
+      removeChartData(series.name);
     } else {
-      addChartData(value);
+      addChartData(series);
     }
     setIsChecked(!isChecked);
   };
