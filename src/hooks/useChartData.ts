@@ -35,7 +35,9 @@ const useChartData = (): [
    * @returns {void}
    */
   const removeChartData = (prefName: string) => {
-    setChartData(chartData.filter((item) => item.name !== prefName));
+    setChartData((prevChartData) =>
+      prevChartData.filter((item) => item.name !== prefName),
+    ); // eslint-disable-line function-paren-newline
   };
 
   // rechartで線を作るために使用する配列
