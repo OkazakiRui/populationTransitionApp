@@ -1,6 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 import { Suspense, VFC } from 'react';
+import { Helmet } from 'react-helmet';
 
 import Chart from 'components/atoms/Chart';
 import Loading from 'components/atoms/Loading';
@@ -20,6 +21,9 @@ const Home: VFC = () => {
 
   return (
     <div css={styles.wrap}>
+      <Helmet>
+        <title>都道府県別総人口推移グラフ</title>
+      </Helmet>
       <Title title="都道府県別総人口推移グラフ" />
       <Suspense fallback={<Loading />}>
         <Prefectures
