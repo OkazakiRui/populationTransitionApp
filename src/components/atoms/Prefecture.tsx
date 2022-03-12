@@ -1,9 +1,8 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 import { memo, useState, VFC } from 'react';
-import { useRecoilValue } from 'recoil';
 
-import seriesSelector from 'recoil/seriesData';
+import PrefectureFetch from 'components/atoms/PrefectureFetch';
 import { Prefecture as TypePrefecture } from 'types/prefecture';
 import { SeriesData } from 'types/series';
 
@@ -34,7 +33,6 @@ const Prefecture: VFC<Props> = ({
   removeChartData,
 }) => {
   const [isChecked, setIsChecked] = useState(false);
-  const series = useRecoilValue(seriesSelector(prefecture));
 
   /**
    * input:checkbox が更新されるとグラフのデータが更新される
@@ -42,11 +40,6 @@ const Prefecture: VFC<Props> = ({
    * @returns {void}
    */
   const checkHandler = () => {
-    if (isChecked) {
-      removeChartData(series.name);
-    } else {
-      addChartData(series);
-    }
     setIsChecked(!isChecked);
   };
 
@@ -62,6 +55,13 @@ const Prefecture: VFC<Props> = ({
         />
         {prefecture.prefName}
       </label>
+      {isChecked && (
+        <PrefectureFetch
+          prefecture={prefecture}
+          addChartData={addChartData}
+          removeChartData={removeChartData}
+        />
+      )}
     </li>
   );
 };
