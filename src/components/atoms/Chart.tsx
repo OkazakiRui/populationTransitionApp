@@ -15,7 +15,13 @@ import {
 import { RechartData } from 'types/series';
 
 const styles = {
-  wrap: css({ marginInline: 'auto', marginTop: '1rem', width: '90%' }),
+  wrap: css({
+    marginInline: 'auto',
+    marginTop: '1rem',
+    width: '90%',
+    order: 2,
+  }),
+  mobleWrap: css({ order: 0 }),
 };
 
 type Props = {
@@ -37,8 +43,8 @@ const Chart: VFC<Props> = ({ chartData }) => {
   }, []);
 
   return (
-    <div css={!isMobile && styles.wrap}>
-      <ResponsiveContainer height={500}>
+    <div css={isMobile ? styles.mobleWrap : styles.wrap}>
+      <ResponsiveContainer height={isMobile ? 210 : 500}>
         <LineChart
           data={chartData.data}
           margin={{

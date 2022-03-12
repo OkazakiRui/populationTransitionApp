@@ -16,6 +16,7 @@ import { SeriesData } from 'types/series';
 
 const styles = {
   wrap: css({
+    width: '100%',
     display: 'grid',
     gridAutoRows: 'calc(var(--font-size-base) + 8px)',
     gridTemplateColumns: 'repeat(auto-fill, minmax(6rem, 1fr))',
@@ -23,6 +24,7 @@ const styles = {
     alignItems: 'center',
     marginInline: 'auto',
     listStyle: 'none',
+    order: 1,
   }),
 };
 

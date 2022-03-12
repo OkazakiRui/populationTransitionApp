@@ -1,3 +1,5 @@
+/** @jsxImportSource @emotion/react */
+import { css } from '@emotion/react';
 import { Suspense, VFC } from 'react';
 
 import Chart from 'components/atoms/Chart';
@@ -6,11 +8,18 @@ import Title from 'components/atoms/Title';
 import Prefectures from 'components/molecules/Prefectures';
 import useChartData from 'hooks/useChartData';
 
+const styles = {
+  wrap: css({
+    display: 'flex',
+    flexDirection: 'column',
+  }),
+};
+
 const Home: VFC = () => {
   const [chartData, addChartData, removeChartData] = useChartData();
 
   return (
-    <>
+    <div css={styles.wrap}>
       <Title title="都道府県別総人口推移グラフ" />
       <Suspense fallback={<Loading />}>
         <Prefectures
@@ -19,7 +28,7 @@ const Home: VFC = () => {
         />
         <Chart chartData={chartData} />
       </Suspense>
-    </>
+    </div>
   );
 };
 
