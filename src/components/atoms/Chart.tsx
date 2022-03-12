@@ -58,7 +58,15 @@ const Chart: VFC<Props> = ({ chartData }) => (
         />
         <Legend layout="vertical" align="right" verticalAlign="middle" />
         {chartData.prefecturesNameList.map((name) => (
-          <Line dataKey={name} key={name} strokeWidth="2" dot={false} />
+          <Line
+            dataKey={name}
+            key={name}
+            stroke={`#${encodeURIComponent(name)
+              .replaceAll('%', '')
+              .slice(3, 9)}`}
+            strokeWidth="2"
+            dot={false}
+          />
         ))}
       </LineChart>
     </ResponsiveContainer>
