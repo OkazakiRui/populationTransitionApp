@@ -5,12 +5,6 @@
 ### node_module をインストール
 
 ```
-npm i
-```
-
-or
-
-```
 yarn
 ```
 
@@ -28,34 +22,16 @@ REACT_APP_API_KEY= apiKey を入れる
 ### ローカルサーバーを立てる
 
 ```
-npm run start
-```
-
-or
-
-```
 yarn start
 ```
 
 ### build する
 
 ```
-npm run build
-```
-
-or
-
-```
 yarn build
 ```
 
 ### test する
-
-```
-npm run test
-```
-
-or
 
 ```
 yarn test
